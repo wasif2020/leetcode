@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool matching(int a,int b){
+   bool matching(int a,int b){
         return (a=='(' && b==')' || a=='{' && b=='}' || a=='[' && b==']' );
     }
     bool isValid(string s) {
