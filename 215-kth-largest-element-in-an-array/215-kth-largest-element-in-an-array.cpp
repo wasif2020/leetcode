@@ -1,8 +1,9 @@
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
-        sort(nums.begin(),nums.end());
-        int res=nums.size()-k;
-        return nums[res];
+        multiset<int>m(nums.begin(),nums.end());
+        auto it=m.begin();
+        advance(it,nums.size()-k);
+        return *it;
     }
 };
