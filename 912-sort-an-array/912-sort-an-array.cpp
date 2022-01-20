@@ -1,10 +1,12 @@
 class Solution {
 public:
     vector<int> sortArray(vector<int>& nums) {
-        multiset<int>s(nums.begin(),nums.end());
+        priority_queue<int,vector<int>,greater<int>>pq(nums.begin(),nums.end());
         nums.clear();
-        for(auto x:s)
-            nums.push_back(x);
+        while(pq.empty()==false){
+            nums.push_back(pq.top());
+            pq.pop();
+        }
         return nums;
             
     }
