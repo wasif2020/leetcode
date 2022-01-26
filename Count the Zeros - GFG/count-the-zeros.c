@@ -8,14 +8,14 @@
 //User function Template for C
 
 int countZeroes(int arr[], int n) {
-    int count=0;
+    int c=0;
     for(int i=n-1; i>=0; i--){
-        if(arr[i]!=0){
-            return count;
+        if(arr[i]==1){
+            break;
         }
-        count++;
+        c++;
     }
-    return count;
+    return c;
 }
 
 // { Driver Code Starts.
