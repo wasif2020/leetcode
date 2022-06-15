@@ -8,20 +8,22 @@ public:
         if(root==NULL)
             return v;
         queue<TreeNode*>q;
+        q.push(NULL);
         q.push(root);
-        while(q.empty()==false){
-            int n=q.size();
-            for(int i=0; i<n; i++){
+        while(q.size()>1){
                 TreeNode* curr=q.front();
                 q.pop();
-                if(i==0){
-                    v.push_back(curr->val);
+                if(curr==NULL){
+                    TreeNode* value=q.front();
+                    v.push_back(value->val);
+                    q.push(NULL);
+                    continue;
                 }
                 if(curr->right!=NULL)
                     q.push(curr->right);
                 if(curr->left!=NULL)
                     q.push(curr->left);
-            }
+            
         }
         return v;
     }
