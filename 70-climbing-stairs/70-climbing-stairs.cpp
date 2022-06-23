@@ -1,15 +1,14 @@
 class Solution {
 public:
-    int memo[46]={0};
     int climbStairs(int n) {
-        if(memo[n]==0){
-        int res;
-        if(n<3)
-           res=n;
-        else
-            res=climbStairs(n-1)+climbStairs(n-2); 
-        memo[n]=res;
-        }
-        return memo[n];
+     // USING TABULATION METHOD
+         if(n<=2)
+             return n;
+        int tab[n+1];
+        tab[1]=1;
+        tab[2]=2;
+        for(int i=3; i<=n; i++)
+            tab[i]=tab[i-1]+tab[i-2];
+        return tab[n];
     }
 };
