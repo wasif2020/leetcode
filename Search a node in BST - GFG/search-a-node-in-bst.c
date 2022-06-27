@@ -39,22 +39,18 @@ struct Node *insert(struct Node *tree, int val) {
 
 // Function to search a struct node in BST.
 bool search(struct Node* root, int x) {
-    if(root==NULL){
-        return false;
+   while(root!=NULL){
+    if(root->data==x){
+        return true;
     }
-    struct Node* curr=root;
-    while(curr!=NULL){
-        if(curr->data==x){
-            return true;
-        }
-        else if(curr->data>x){
-            curr=curr->left;
-        }
-        else{
-            curr=curr->right;
-        }
+    else if(root->data>x){
+        root=root->left;
     }
-    return false;
+    else{
+        root=root->right;
+    }
+   }
+   return false;
 }
 
 
