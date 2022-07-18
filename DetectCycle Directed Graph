@@ -1,0 +1,66 @@
+Given a Directed Graph with V vertices (Numbered from 0 to V-1) and E edges, check whether it contains any cycle or not.
+
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution {
+  public:
+    // Function to detect cycle in a directed graph.
+    bool cycleDir(vector<int>adj[],int s,vector<bool>&visited,vector<bool>&cstk){
+              visited[s]=true;
+              cstk[s]=true;
+              for(auto u:adj[s]){
+                  if(visited[u]==false){
+                      if(cycleDir(adj,u,visited,cstk)==true){
+                          return true;
+                      }
+                  }
+                  else if(cstk[u]==true){
+                      return true;
+                  }
+              }
+              cstk[s]=false;
+              return false;
+       }
+    bool isCyclic(int V, vector<int> adj[]) {
+        vector<bool>visited(V,false);
+        vector<bool>cstk(V,false);
+        for(int i=0;i<V; i++){
+            if(visited[i]==false){
+                if(cycleDir(adj,i,visited,cstk)==true){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
+
+//{ Driver Code Starts.
+
+int main() {
+
+    int t;
+    cin >> t;
+    while (t--) {
+        int V, E;
+        cin >> V >> E;
+
+        vector<int> adj[V];
+
+        for (int i = 0; i < E; i++) {
+            int u, v;
+            cin >> u >> v;
+            adj[u].push_back(v);
+        }
+
+        Solution obj;
+        cout << obj.isCyclic(V, adj) << "\n";
+    }
+
+    return 0;
+}
+
+// } Driver Code Ends
