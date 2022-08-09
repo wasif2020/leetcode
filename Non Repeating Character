@@ -1,0 +1,56 @@
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+
+class Solution
+{
+    public:
+    //Function to find the first non-repeating character in a string.
+    char nonrepeatingCharacter(string S)
+    {
+       char res='$';
+       unordered_map<char,int>m;
+       int n=S.size();
+       for(int i=n-1; i>=0; i--){
+           m[S[i]]++;
+       }
+       for(int i=0; i<n; i++){
+           if(m[S[i]]==1){
+               res=S[i];
+               break;
+           }
+       }
+       return res;
+    }
+};
+
+//{ Driver Code Starts.
+
+int main() {
+	
+	int T;
+	cin >> T;
+	
+	while(T--)
+	{
+	
+	    string S;
+	    cin >> S;
+	    Solution obj;
+        char ans = obj.nonrepeatingCharacter(S);
+        
+        if(ans != '$')
+	    cout << ans;
+        else cout << "-1";
+            
+        cout << endl;
+	    
+	}
+	
+	return 0;
+}
+
+// } Driver Code Ends
