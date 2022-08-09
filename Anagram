@@ -1,0 +1,54 @@
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+class Solution
+{
+    public:
+    //Function is to check whether two strings are anagram of each other or not.
+    bool isAnagram(string a, string b){
+        int n1=a.size();
+        int n2=b.size();
+        int c[26]={0};
+        if(n1!=n2){
+            return false;
+        }
+        for(int i=0; i<n1; i++){
+            c[a[i]-'a']++;
+            c[b[i]-'a']--;
+        }
+        for(int i=0; i<26; i++){
+            if(c[i]!=0){
+                return false;
+            }
+        }
+        return true;
+        
+        // Your code here
+        
+    }
+
+};
+
+//{ Driver Code Starts.
+
+int main() {
+    
+    int t;
+
+    cin >> t;
+
+    while(t--){
+        string c, d;
+
+        cin >> c >> d;
+        Solution obj;
+        if(obj.isAnagram(c, d)) cout << "YES" << endl;
+        else cout << "NO" << endl;
+    }
+
+}
+
+// } Driver Code Ends
