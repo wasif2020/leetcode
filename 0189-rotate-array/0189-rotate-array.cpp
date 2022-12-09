@@ -6,11 +6,14 @@ public:
         }
     }
     void rotate(vector<int>& nums, int k) {
+        // rotating k position to left is same as rotating n-k position to the right;
         int n=nums.size();
         k=k%n;
-        k=n-k;
-        reverse(nums,0,k-1);
-        reverse(nums,k,n-1);
+        if(n==0 or n==1){
+            return;
+        }
+        reverse(nums,0,n-k-1);
+        reverse(nums,n-k,n-1);
         reverse(nums,0,n-1);
     }
 };
